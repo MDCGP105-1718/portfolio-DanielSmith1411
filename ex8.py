@@ -12,5 +12,5 @@ while current_savings < deposit:
     current_savings = current_savings + monthly_salary * portion_saved * r
     months = months + 1
     if months % 6 == 0:
-        monthly_salary*(1 + semi_annual_raise)
+        annual_salary*(1 + semi_annual_raise)
 print("Number of months: ", months)
