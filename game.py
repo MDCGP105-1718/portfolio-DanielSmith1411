@@ -1,17 +1,15 @@
-looking='false'
+looking='false' #If I put this with the other variables, the game breaks. So it's here.
 
 class Hallway(object):
     def __init__(self,locations):
         self.locations=(Kitchen, DrawingRoom, Stairs)
         self.locations=locations
         self.looking=looking
-    def get_description(self):
-            print ('A LOOK around the hallway confirms that it has two ROOMS, one on the LEFT and the other on the RIGHT, and a set of STAIRS at the far end of it.')
+    while looking=='true': #this part doesn't seem to work. It doesn't print anything.
+            print ('A look around the hallway confirms that it has two ROOMS, one on the LEFT and the other on the RIGHT, and a set of STAIRS at the far end of it.')
             looking='false'
             inp='ready'
 
-    if looking=='true':
-        get_description
     def kitchen(self):
         return Kitchen()
 
@@ -58,7 +56,7 @@ def take(inpsplit):
   Should print out the second item followed by a description of it.
   """
   #t=input('Choose item ')
-  if len(inpsplit)==2 or (len(inpsplit)==3 and inpsplit[1]=='the'):
+  if len(inpsplit)==2 or (len(inpsplit)==3 and inpsplit[1]=='the'):#no items have been added because I cannot get classes to work, let alone subclasses. THis just prints the command for a second item that the user specifies.
       print('Took the', inpsplit[-1])
       inp = 'ready'
  # elif len(inpsplit)==3 and inpsplit[1]=='the':
@@ -74,7 +72,7 @@ def look(inpsplit):
     if len(inpsplit)==1:
         looking='true'
     else:
-        print ("error")
+        print ("Description of" inpsplit[-1])#this message never prints, so I am assuming that the first part of the if statement is running.
         inp='ready'
 
 def go(inpsplit):
@@ -105,7 +103,7 @@ def commandprompt(inp):
   This is how the player interacts with the game.
   """
   inp = 'ready'
-  while inp == 'ready':
+  while inp == 'ready':#this would all work if I could get a single game relevant function to work.
       inp = input('What will you do?     ')
       inpsplit = inp.split(' ')
       #print(inpsplit[1])
@@ -118,7 +116,7 @@ def commandprompt(inp):
       elif inpsplit[0] == ('look'):
           look(inpsplit)
           inp = 'ready'
-      elif inpsplit[0] == ('end'):
+      elif inpsplit[0] == ('end'):#This is so I can end the game without having to close Powershell.
           print('Ended.')
       else:
           print('Wrong input')
